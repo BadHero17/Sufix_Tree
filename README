@@ -1,0 +1,28 @@
+Ursu Vasile : Arbori de sufixe
+
+Am implementat aici un arbore de sufixe simplu,
+care functioneaza in regim offline (necesita intai toate operatiile de inserare si apoi cele de cautare).
+Pentru a implementa aceasta structura de date am folosit
+liste inlantuite cu mai multi pointeri, simuland structuri de date arborescente si parcurgerea
+arborilor multicai.
+
+Detalii implementare :
+   -Am decis sa implementez coada cu o lista simplu inlantuita, pentru a putea efectua o operatie de scriere
+    si anume parcurgerea in latime, deci nu am gasit necesara utilizarea unei alte structuri de date.
+
+   -Implementarea functiei de scriere a sufixelor intr-un arbore se bazeaza pe adaugarea celulei curente
+    in arbore, dupa care e apelata din nou functia pe celula data, cu elementul urmator din sir.
+    In acest mod am obtinut o implementare eleganta ce nu utilizeaza memorie in plus
+
+   -Toate functiile necesare pentru operatiile 2 si 3 sunt implementari simple de recursie pe
+    toti subarborii copii si returnare a unor rezultate (sume, maxim, 1 sau 0).
+
+   -Cea mai notabila functie din structura este implementarea functiei de compresare a cailor
+    Functia data se apeleaza intai pe sine in mod recursiv, pana la frunze, unde se opreste.
+    Cand revine din recursie, functia verifica daca nodul curent are cumva un singur copil care
+    nu e '$', caz in care informatia din nodul dat este appenduita la cea din nodul curent, iar
+    nodul a carui informatie am copiat-o e distrus, dupa ce mutam copii lui la nodul curent.
+    Desi un astfel de aproach este ineficient, implementarea sa este mult mai usoara si clara.
+   
+   -Functia main poate fi utilizata pentru a testa implementarea operatiilor, chemand executabilul cu
+   flagurile -c1, -c2, -c3 sau -c4
